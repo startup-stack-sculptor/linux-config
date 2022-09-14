@@ -7,14 +7,18 @@ call plug#begin()
   Plug 'tpope/vim-eunuch'         " Vim sugar for UNIX commands
   Plug 'tpope/vim-surround'       " Operate on surroundings in pairs
   Plug 'tpope/vim-vinegar'        " Netrw enhancement
-  Plug 'ziglang/zig.vim'          " Vim configuration for zig
+  Plug 'ziglang/zig.vim', { 'for': 'zig' }          " Vim configuration for zig
   Plug 'tpope/vim-commentary'     " Comment stuff out
   Plug 'mg979/vim-visual-multi'   " Multiple cursor
-  Plug 'OmniSharp/omnisharp-vim'  " dotnet lsp
+  Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }  " dotnet lsp
+  Plug 'lambdalisue/suda.vim'     " sudo support in neovim + vim
+  Plug 'rescript-lang/vim-rescript', { 'for': 'rescript' }
+                                  " rescript integration
+
+  Plug 'preservim/tagbar'
 
   if has('nvim')
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'mfussenegger/nvim-jdtls'                " Support for eclipse.jdt.ls
+    Plug 'mfussenegger/nvim-jdtls', { 'for': 'java' }                " Support for eclipse.jdt.ls
   endif
 
 call plug#end()
