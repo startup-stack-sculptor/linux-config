@@ -8,15 +8,18 @@
 ;;; Code:
 
 (global-display-line-numbers-mode 1)
+(global-visual-line-mode 1)
 
 (setq inhibit-startup-message t
       visible-bell t
       display-line-numbers 'relative
 			gdscript-godot-executable "~/Desktop/Godot"
       package-archives '(
-			 ("marmalade" . "http://marmalade-repo.org/packages/")
+			 ("melpas" . "https://melpa.org/packages/")
 			 ("gnu" . "http://elpa.gnu.org/packages/")
+			 ("melpastable" . "https://stable.melpa.org/packages/")
 			 ("melpa"."http://melpa.org/packages/"))
+      suggest-key-bindings t
       tab-width 2)
 
 
@@ -34,10 +37,12 @@
 
 ;; Enable Evil
 (require 'evil)
-(evil-mode 1)
+(evil-mode t)
 
 (require 'yasnippet)
 (yas-global-mode 1)
+
+(setq inferior-lisp-program "/usr/bin/sbcl")
 
 
 ;; Load path
@@ -51,20 +56,17 @@
 ;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
 ;; Packages
 ;; Preferences
-(when (require 'dired-sync nil t)
-   (define-key dired-mode-map (kbd "C-c S") 'dired-do-sync))
 
-;; Sublime-like comments
-(defun toggle-comment-on-line-or-region ()
-  "Comments or uncomments the region or the current line if there is no active region."
-  (interactive)
-  (let (beg end)
-    (if (region-active-p)
-        (setq beg (region-beginning) end (region-end))
-      (setq beg (line-beginning-position) end (line-end-position)))
-    (comment-or-uncomment-region beg end)))
-(global-set-key (kbd "M-/") 'toggle-comment-on-line-or-region)
 ;; Programming
+
+;; use-package
+
+;; company-mode
+(global-company-mode)
+(add-hook 'after-init-hook 'company-tng-mode)
+(add-hook 'sgml-mode-hook 'emmet-mode)  ;; Auto-start in all markup modes
+(add-hook 'css-mode-hook 'emmet-mode)  ;; enable Emmet's css abbreviation.
+(setq company-show-quick-access 'left)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -73,10 +75,10 @@
  ;; If there is more than one, they won't work right.
  '(display-line-numbers-type 'relative)
  '(global-display-line-numbers-mode t)
- '(helm-mode t)
+ '(org-export-backends '(ascii html icalendar latex md odt))
  '(package-selected-packages
-	 '(gdscript-mode company-go go-mode zig-mode markdown-mode rust-mode rustic vterm magit restclient yasnippet-snippets eglot omnisharp flycheck evil elpy ##))
- '(tab-bar-mode t))
+   '(sly muse julia-mode lua-mode ess emmet-mode use-package dart-mode flutter d-mode gdscript-mode company-go go-mode markdown-mode rust-mode rustic vterm magit restclient yasnippet-snippets eglot flycheck evil ##))
+ '(xterm-mouse-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

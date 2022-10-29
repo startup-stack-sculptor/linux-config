@@ -29,9 +29,10 @@ vnoremap <Tab> >
 vnoremap <S-Tab> <
 
 map <leader>d :ALEGoToDefinition<CR>
-map <leader>r :ALEFindReferences<CR>
 map <leader>f :ALEFix<CR>
 map <leader>h :ALEHover<CR>
+map <leader>r :ALEFindReferences<CR>
+map <leader>t :ALEToggle<CR>
 
 " Navigate between ALE Errors quickly
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)

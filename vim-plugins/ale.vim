@@ -13,9 +13,9 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 
 " ALE autocompletion
-let g:ale_completion_enabled = 1
+" let g:ale_completion_enabled = 1
 
-set omnifunc+=ale#completion#OmniFunc
+" set omnifunc+=ale#completion#OmniFunc
 
 let g:ale_sign_error='✖'
 let g:ale_sign_info='ℹ'
