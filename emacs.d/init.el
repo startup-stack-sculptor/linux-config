@@ -9,10 +9,15 @@
 
 (global-display-line-numbers-mode 1)
 (global-visual-line-mode 1)
+(global-set-key (kbd "M-o") 'other-window)
+
+;;(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
+;;(add-hook 'xref-backend-definitions #'dumb-jump-xref-activate)
+(setq xref-show-definitions-function #'xref-show-definitions-completing-read)
+
 
 (setq inhibit-startup-message t
       visible-bell t
-      display-line-numbers 'relative
 			gdscript-godot-executable "~/Desktop/Godot"
       package-archives '(
 			 ("melpas" . "https://melpa.org/packages/")
@@ -42,6 +47,10 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
+(add-hook 'dart-mode-hook 'hs-minor-mode)
+(add-hook 'dart-mode-hook 'highlight-parentheses-mode)
+(add-hook 'scheme-mode-hook 'highlight-parentheses-mode)
+
 (setq inferior-lisp-program "/usr/bin/sbcl")
 
 
@@ -68,6 +77,8 @@
 (add-hook 'css-mode-hook 'emmet-mode)  ;; enable Emmet's css abbreviation.
 (setq company-show-quick-access 'left)
 
+(put 'dired-find-alternate-file 'disabled nil)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -77,7 +88,8 @@
  '(global-display-line-numbers-mode t)
  '(org-export-backends '(ascii html icalendar latex md odt))
  '(package-selected-packages
-   '(sly muse julia-mode lua-mode ess emmet-mode use-package dart-mode flutter d-mode gdscript-mode company-go go-mode markdown-mode rust-mode rustic vterm magit restclient yasnippet-snippets eglot flycheck evil ##))
+   '(kotlin-mode zig-mode evil-surround ggtags php-mode geiser-guile geiser-chez xref-js2 yaml-mode haskell-mode highlight-parentheses paredit geiser-chicken sudo-edit groovy-mode sly muse julia-mode lua-mode ess emmet-mode dart-mode flutter d-mode gdscript-mode company-go go-mode markdown-mode rust-mode rustic vterm magit restclient yasnippet-snippets eglot flycheck evil ##))
+ '(tty-menu-open-use-tmm nil)
  '(xterm-mouse-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -87,3 +99,6 @@
  '(default ((t (:family "Iosevka Fixed SS13" :foundry "UKWN" :slant normal :weight normal :height 143 :width normal)))))
 ;;; init.el ends here
 
+;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
+(require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
+;; ## end of OPAM user-setup addition for emacs / base ## keep this line
