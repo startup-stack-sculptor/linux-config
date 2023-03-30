@@ -11,6 +11,9 @@
 (global-visual-line-mode 1)
 (global-set-key (kbd "M-o") 'other-window)
 
+;; stop creating backup files
+(setq make-backup-files nil)
+
 ;;(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 ;;(add-hook 'xref-backend-definitions #'dumb-jump-xref-activate)
 (setq xref-show-definitions-function #'xref-show-definitions-completing-read)
@@ -26,6 +29,13 @@
 			 ("melpa"."http://melpa.org/packages/"))
       suggest-key-bindings t
       tab-width 2)
+
+
+(if (not (display-graphic-p))
+    ;; This configuration will only be applied in a terminal session
+    (progn
+      ;; Bind the key sequence C-M-S-v to scroll down the other window
+      (global-set-key (kbd "C-M-z") 'scroll-other-window-down)))
 
 
 (electric-pair-mode)
@@ -88,7 +98,7 @@
  '(global-display-line-numbers-mode t)
  '(org-export-backends '(ascii html icalendar latex md odt))
  '(package-selected-packages
-   '(kotlin-mode zig-mode evil-surround ggtags php-mode geiser-guile geiser-chez xref-js2 yaml-mode haskell-mode highlight-parentheses paredit geiser-chicken sudo-edit groovy-mode sly muse julia-mode lua-mode ess emmet-mode dart-mode flutter d-mode gdscript-mode company-go go-mode markdown-mode rust-mode rustic vterm magit restclient yasnippet-snippets eglot flycheck evil ##))
+   '(csharp-mode clojure-mode cider typescript-mode docker-tramp haxe-mode racket-mode geiser-gambit kotlin-mode zig-mode evil-surround ggtags php-mode geiser-guile geiser-chez xref-js2 yaml-mode haskell-mode highlight-parentheses paredit geiser-chicken sudo-edit groovy-mode sly muse julia-mode lua-mode ess emmet-mode dart-mode flutter d-mode gdscript-mode company-go go-mode markdown-mode rust-mode rustic vterm magit restclient yasnippet-snippets eglot flycheck evil ##))
  '(tty-menu-open-use-tmm nil)
  '(xterm-mouse-mode t))
 (custom-set-faces
