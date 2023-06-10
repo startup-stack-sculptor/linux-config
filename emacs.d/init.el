@@ -10,9 +10,12 @@
 (global-display-line-numbers-mode 1)
 (global-visual-line-mode 1)
 (global-set-key (kbd "M-o") 'other-window)
+(global-set-key (kbd "M-s") 'isearch-forward-thing-at-point)
 
 ;; stop creating backup files
 (setq make-backup-files nil)
+
+(setq auth-source-save-behavior 'verbose)
 
 ;;(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 ;;(add-hook 'xref-backend-definitions #'dumb-jump-xref-activate)
@@ -29,6 +32,10 @@
 			 ("melpa"."http://melpa.org/packages/"))
       suggest-key-bindings t
       tab-width 2)
+
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 
 (if (not (display-graphic-p))
@@ -49,6 +56,10 @@
 (require 'package)
 
 (global-flycheck-mode)
+
+(global-subword-mode)
+
+(setq company-dabbrev-downcase nil)
 
 ;; Enable Evil
 (require 'evil)
@@ -71,6 +82,10 @@
 		 ))
     (mapc load-it (directory-files dir nil "\\.el$"))))
 (load-directory "~/.emacs.d/lisp")
+
+(add-to-list 'auto-mode-alist '("\\.script\\'" . lua-mode))
+(add-to-list 'auto-mode-alist '("\\.as\\'" . c-mode))
+(add-hook 'dired-mode-hook 'dired-hide-details-mode)
 
 ;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
 ;; Packages
@@ -98,7 +113,7 @@
  '(global-display-line-numbers-mode t)
  '(org-export-backends '(ascii html icalendar latex md odt))
  '(package-selected-packages
-   '(csharp-mode clojure-mode cider typescript-mode docker-tramp haxe-mode racket-mode geiser-gambit kotlin-mode zig-mode evil-surround ggtags php-mode geiser-guile geiser-chez xref-js2 yaml-mode haskell-mode highlight-parentheses paredit geiser-chicken sudo-edit groovy-mode sly muse julia-mode lua-mode ess emmet-mode dart-mode flutter d-mode gdscript-mode company-go go-mode markdown-mode rust-mode rustic vterm magit restclient yasnippet-snippets eglot flycheck evil ##))
+   '(cmake-mode evil-surround magit nim-mode svelte-mode graphql-mode protobuf-mode tuareg csharp-mode clojure-mode typescript-mode docker-tramp haxe-mode racket-mode geiser-gambit kotlin-mode zig-mode ggtags php-mode geiser-guile geiser-chez xref-js2 yaml-mode haskell-mode highlight-parentheses paredit geiser-chicken sudo-edit groovy-mode sly muse julia-mode lua-mode ess emmet-mode dart-mode flutter d-mode gdscript-mode company-go go-mode markdown-mode rust-mode rustic vterm restclient yasnippet-snippets eglot flycheck evil ##))
  '(tty-menu-open-use-tmm nil)
  '(xterm-mouse-mode t))
 (custom-set-faces
