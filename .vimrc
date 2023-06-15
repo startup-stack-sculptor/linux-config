@@ -26,8 +26,6 @@ set smartindent
 filetype plugin on                  " -- AUTOCOMPLETION --
 set omnifunc=syntaxcomplete#Complete
 
-set rtp+=~/.direct/bash_utils/merlin/share/merlin/vim
-
 " extend grep with ripgrep
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden
 set grepformat=%f:%l:%c:%m
@@ -44,3 +42,6 @@ inoremap <expr> <Tab> pumvisible() ? '<C-n>' :
 
 
 let g:OmniSharp_server_use_net6 = 1
+
+
+au BufNewFile,BufRead *.svelte set filetype=html
