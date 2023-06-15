@@ -14,5 +14,7 @@ copy_files:
 	@echo "Copying files..."
 	@cp $(addprefix $(EMACS_SRC_DIR)/, $(FILES)) $(EMACS_DEST_DIR)
 	@cp -R $(EMACS_LISP_SRC_DIR)/ $(EMACS_DEST_DIR)
+	@cp ~/.tmux.conf .
+	@cp ~/.vimrc .
 	@echo "Files copied successfully"
 
