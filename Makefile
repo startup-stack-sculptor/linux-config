@@ -13,5 +13,6 @@ FILES := init.el
 copy_files:
 	@echo "Copying files..."
 	@cp $(addprefix $(EMACS_SRC_DIR)/, $(FILES)) $(EMACS_DEST_DIR)
+	@cp -R $(EMACS_LISP_SRC_DIR)/ $(EMACS_DEST_DIR)
 	@echo "Files copied successfully"
 
