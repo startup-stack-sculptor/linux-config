@@ -64,6 +64,7 @@
 ;; Enable Evil
 (require 'evil)
 (evil-mode t)
+(global-evil-surround-mode 1)
 
 (require 'yasnippet)
 (yas-global-mode 1)
@@ -113,7 +114,7 @@
  '(global-display-line-numbers-mode t)
  '(org-export-backends '(ascii html icalendar latex md odt))
  '(package-selected-packages
-   '(cmake-mode evil-surround magit nim-mode svelte-mode graphql-mode protobuf-mode tuareg csharp-mode clojure-mode typescript-mode docker-tramp haxe-mode racket-mode geiser-gambit kotlin-mode zig-mode ggtags php-mode geiser-guile geiser-chez xref-js2 yaml-mode haskell-mode highlight-parentheses paredit geiser-chicken sudo-edit groovy-mode sly muse julia-mode lua-mode ess emmet-mode dart-mode flutter d-mode gdscript-mode company-go go-mode markdown-mode rust-mode rustic vterm restclient yasnippet-snippets eglot flycheck evil ##))
+   '(scala-mode cmake-mode evil-surround magit nim-mode svelte-mode graphql-mode protobuf-mode tuareg csharp-mode clojure-mode typescript-mode docker-tramp haxe-mode racket-mode geiser-gambit kotlin-mode zig-mode ggtags php-mode geiser-guile geiser-chez xref-js2 yaml-mode haskell-mode highlight-parentheses paredit geiser-chicken sudo-edit groovy-mode sly muse julia-mode lua-mode ess emmet-mode dart-mode flutter d-mode gdscript-mode company-go go-mode markdown-mode rust-mode rustic vterm restclient yasnippet-snippets eglot flycheck evil ##))
  '(tty-menu-open-use-tmm nil)
  '(xterm-mouse-mode t))
 (custom-set-faces
