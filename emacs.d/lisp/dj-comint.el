@@ -44,3 +44,8 @@
 (defun send-region-kotlin (start end)
   (interactive "r")
   (send-dj-region start end "*Kotlin REPL*"))
+
+
+(defun send-region-scala (start end)
+  (interactive "r")
+  (send-dj-region start end "*Scala REPL*"))
