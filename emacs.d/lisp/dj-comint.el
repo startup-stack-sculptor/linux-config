@@ -34,7 +34,7 @@
   ;;(interactive "r")
   (let ((code (buffer-substring-no-properties start end)))
     (with-current-buffer buffer
-      (comint-send-string (get-buffer-process (current-buffer)) code))))
+      (comint-send-string (get-buffer-process (current-buffer)) (concat code "\n")))))
 
 (defun send-region-clj (start end)
   (interactive "r")
