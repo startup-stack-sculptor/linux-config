@@ -1,0 +1,12 @@
+(setq sql-connection-alist
+      '((mariadb (sql-product 'mysql)
+                 (sql-server "localhost")
+                 (sql-user "boss")
+                 (sql-password "boss12")
+                 (sql-database "demo"))
+	(postgresql (sql-product 'postgres)
+		    (sql-port 5432)
+		    (sql-server "localhost")
+		    (sql-user "boss")
+		    (sql-password "boss12")
+		    (sql-database "demo"))))
