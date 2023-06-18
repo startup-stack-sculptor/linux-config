@@ -1,0 +1,28 @@
+alias deno="~/.deno/bin/deno"
+alias e="emacs -nw"
+alias ec="emacsclient"
+alias E="SUDO_EDITOR=\"emacsclient\" sudo -e"
+alias p="python -m http.server"
+alias lite="/usr/local/direct/lite-xl/lite-xl"
+alias copy="xclip -sel clip"
+
+# live reload local websites
+alias serve="browser-sync start -s -f . --no-notify --host localhost --port 3000"
+alias cockroach="/usr/local/direct/cockroach/cockroach "
+export ANDROID_HOME=~/Android/Sdk
+export DATABASE_URL="postgresql://bijya:CCOjReABUohF_O_MD5PrcQ@satin-goose-4048.8nk.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full"
+alias cockroach_db_pass="CCOjReABUohF_O_MD5PrcQ"
+alias t="touch"
+alias wxmaxima="/usr/local/direct/wxmaxima"
+alias balena="/usr/local/direct/balenaEtcher"
+alias android-studio="/usr/local/direct/android-studio/bin/studio.sh"
+alias se="~/Downloads/liberty-eiffel/target/bin/se"
+alias flutter-reload="~/.utils/flutter-reload.sh"
+alias python=python3
+export PATH=$PATH:"$HOME/.pub-cache/bin"
+
+alias lambdanative="/home/pm/Downloads/lambdanative-1.1.1/scripts/lambdanative"
+manswitch () { man $1 | less -p "^ +$2"}
+
+alias METAMASK_PASSWORD='c28b6ad6d27e'
+
