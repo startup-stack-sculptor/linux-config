@@ -8,7 +8,7 @@
     password))
 
 
-(defun to-clipboard (start end)
+(defun to-clip (start end)
   "Process the region between START and END."
   (interactive "r")
   ;; Code to work with the selected region
