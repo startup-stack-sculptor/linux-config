@@ -6,6 +6,10 @@ fsearch() {
     find . -iname "*$1*"
 }
 
+mvnsearch() {
+    curl -s "https://search.maven.org/solrsearch/select?q=$1&rows=$2&wt=json" | jq '.response.docs[].id'
+}
+
 extract() {
     if [ -f "$1" ]; then
 	case "$1" in
