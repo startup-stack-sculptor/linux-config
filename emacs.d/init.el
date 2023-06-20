@@ -105,6 +105,19 @@
 
 (put 'dired-find-alternate-file 'disabled nil)
 
+
+
+(defun package-sync ()
+  "Interactive packages to install all packages"
+  (interactive)
+  (unless package-archive-contents
+    (package-refresh-contents))
+  (setq package-selected-packages (butlast package-selected-packages))
+  (dolist (package package-selected-packages)
+    (unless (package-installed-p package)
+      (package-install (intern package))))
+  (message "All selected packages installed successfully."))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
