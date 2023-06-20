@@ -49,3 +49,9 @@
 (defun send-region-scala (start end)
   (interactive "r")
   (send-dj-region start end "*Scala REPL*"))
+
+
+
+(defun send-region-kawa (start end)
+  (interactive "r")
+  (send-dj-region start end "*Kawa REPL*"))
