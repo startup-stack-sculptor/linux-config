@@ -9,7 +9,6 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 export VCPKG_ROOT="/home/pm/code/.c/vcpkg/"
 
-
 alias conan-install="conan install . --output-folder=build --build=missing"
 alias conan-cmake="cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release"
 alias vcpkg-cmake="cmake .. -DCMAKE_TOOLCHAIN_FILE=~/code/.c/vcpkg/scripts/buildsystems/vcpkg.cmake"
