@@ -45,3 +45,4 @@ let g:OmniSharp_server_use_net6 = 1
 
 
 au BufNewFile,BufRead *.svelte set filetype=html
+
