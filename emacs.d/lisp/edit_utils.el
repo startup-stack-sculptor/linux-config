@@ -19,12 +19,13 @@
   (insert ";"))
 
 
-(defun insert-semicolon ()
+(defun put-semicolon ()
   "Insert semicolon at end of line in Evil insert mode."
   (interactive)
   (save-excursion)
   ;; Typically mapped to the "End" key.
   (insert ";"))
 
-(global-set-key (kbd ";") 'end-with-semicolon)
+;; (global-set-key (kbd ";") 'end-with-semicolon)
 (define-key evil-insert-state-map (kbd ";") 'end-with-semicolon)
+(define-key evil-insert-state-map (kbd "C-c ;") 'put-semicolon)
