@@ -36,3 +36,21 @@
 	  (dired-do-kill-lines))
       (progn (revert-buffer) ; otherwise just revert to re-show
 	     (set (make-local-variable 'dired-dotfiles-show-p) t)))))
+
+
+
+;; prevent Dired from creating a new buffer when pressing "^"
+(eval-after-load "dired"
+  '(define-key dired-mode-map (kbd "^")
+     (lambda () (interactive)(find-alternate-file ".."))))
+
+
+(defun extract-to-tmp-folder ()
+  "Extract the current file in Dired mode to the /tmp/folder directory."
+  (interactive)
+  (let* ((file (dired-get-filename))
+	 (file-name (file-name-nondirectory file))
+	 (tmp-folder (concat "/tmp/project/" (file-name-sans-extension file-name))))
+    (make-directory tmp-folder t)
+    (shell-command (concat "unzip " (shell-quote-argument file) " -d " (shell-quote-argument tmp-folder))))
+  (message "File extracted to /tmp/folder"))
