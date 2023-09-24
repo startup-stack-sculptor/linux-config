@@ -42,7 +42,7 @@
     ;; This configuration will only be applied in a terminal session
     (progn
       ;; Bind the key sequence C-M-S-v to scroll down the other window
-      (global-set-key (kbd "C-M-z") 'scroll-other-window-down)))
+      (global-set-key (kbd "C-M-b") 'scroll-other-window-down)))
 
 
 (electric-pair-mode)
@@ -73,7 +73,7 @@
 (add-hook 'dart-mode-hook 'highlight-parentheses-mode)
 (add-hook 'scheme-mode-hook 'highlight-parentheses-mode)
 
-(setq inferior-lisp-program "/usr/bin/sbcl")
+(setq inferior-lisp-program "/home/pm/.asdf/shims/sbcl")
 
 
 ;; Load path
@@ -114,7 +114,7 @@
  '(global-display-line-numbers-mode t)
  '(org-export-backends '(ascii html icalendar latex md odt))
  '(package-selected-packages
-   '(scala-mode cmake-mode evil-surround magit nim-mode svelte-mode graphql-mode protobuf-mode tuareg csharp-mode clojure-mode typescript-mode docker-tramp haxe-mode racket-mode geiser-gambit kotlin-mode zig-mode ggtags php-mode geiser-guile geiser-chez xref-js2 yaml-mode haskell-mode highlight-parentheses paredit geiser-chicken sudo-edit groovy-mode sly muse julia-mode lua-mode ess emmet-mode dart-mode flutter d-mode gdscript-mode company-go go-mode markdown-mode rust-mode rustic vterm restclient yasnippet-snippets eglot flycheck evil ##))
+   '(geiser-mit jinja2-mode sbt-mode scala-mode cmake-mode evil-surround magit nim-mode svelte-mode graphql-mode protobuf-mode tuareg csharp-mode clojure-mode typescript-mode docker-tramp haxe-mode racket-mode geiser-gambit kotlin-mode zig-mode ggtags php-mode geiser-guile geiser-chez xref-js2 yaml-mode haskell-mode highlight-parentheses paredit geiser-chicken sudo-edit groovy-mode sly muse julia-mode lua-mode ess emmet-mode dart-mode flutter d-mode gdscript-mode company-go go-mode markdown-mode rust-mode rustic vterm restclient yasnippet-snippets eglot flycheck evil ##))
  '(tty-menu-open-use-tmm nil)
  '(xterm-mouse-mode t))
 (custom-set-faces
@@ -129,3 +129,4 @@
 (require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
 ;; ## end of OPAM user-setup addition for emacs / base ## keep this line
 (put 'narrow-to-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
