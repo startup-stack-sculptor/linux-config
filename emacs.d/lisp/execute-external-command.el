@@ -37,3 +37,27 @@ n-[b/p] for walk backward or forward early commands history."
   (browse-url
    (concat "https://duckduckgo.com/?q="
            (replace-regexp-in-string " " "+" text))))
+
+
+(defun launch-executable-or-find-file ()
+  "Launch the selected executable file in Dired."
+  (interactive)
+  (let ((file (dired-get-filename)))
+    (if (and (not (file-directory-p file))(file-executable-p file))
+        (start-process "exec-process" nil file)
+      (dired-find-file))))
+
+;; (define-key dired-mode-map (kbd "RET") 'launch-executable-or-find-file)
+;; custom behaviour for return
+(defun dj-setup-dired-mode ()
+  "Setup dired mode with the custom keys."
+  (local-set-key (kbd "RET") 'launch-executable-or-find-file))
+
+(add-hook 'dired-mode-hook 'dj-setup-dired-mode)
+
+
+(defun colorize-compilation-buffer ()
+  (toggle-read-only)
+  (ansi-color-apply-on-region compilation-filter-start (point))
+  (toggle-read-only))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
