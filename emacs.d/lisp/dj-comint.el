@@ -1,8 +1,12 @@
+(defun extract-first-word (str)
+  "Extract the first word from the givein string"
+  (car (split-string str "\\s-+")))
+
 (defun run-dj-repl (repl)
   "Start a REPL session in a shell buffer."
   (interactive "sEnter the name of repl executable: ")
   (shell)
-  (setq result (concat "*" (capitalize repl)" REPL*"))
+  (setq result (concat "*" (capitalize (extract-first-word repl))" REPL*"))
   (rename-buffer result)
   (comint-send-string (get-buffer-process result) (format "%s\n" repl)))
 
@@ -41,3 +45,7 @@
      (send-dj-region start end (format "*%s REPL*" (capitalize ,language)))))
 
 (send-region-to-repl "kotlin")
+(send-region-to-repl "lein")
+(send-region-to-repl "dotnet-script")
+(send-region-to-repl "jshell")
+(send-region-to-repl "python")
