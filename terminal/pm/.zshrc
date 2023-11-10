@@ -1,61 +1,137 @@
-# less color scheme
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export VCPKG_ROOT="/home/pm/code/.c/vcpkg/"
-export GOBIN="$HOME/go/bin"
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
-alias code="unset NODE_OPTIONS && code"
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
 
-alias source-emsdk="source ~/.asdf/installs/emsdk/3.1.44/emsdk_env.sh"
-alias mcd_project="cd /tmp && mcd project"
-alias blender="/usr/local/direct/blender/blender"
-alias lite="/usr/local/direct/lite-xl/lite-xl"
-alias rebar="~/.asdf/installs/elixir/.mix/elixir/1-15/rebar3"
-alias dow="aria2c -x 15 $1"
-alias mcd=mkcd
-alias godot="~/Desktop/Godot"
-alias conan-install="conan install . --output-folder=build --build=missing"
-alias conan-cmake="cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release"
-alias vcpkg-cmake="cmake .. -DCMAKE_TOOLCHAIN_FILE=~/code/.c/vcpkg/scripts/buildsystems/vcpkg.cmake"
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-alias u="apt purge --auto-remove"
-alias e="emacs -nw"
-alias ec="emacsclient"
-alias E="SUDO_EDITOR=\"emacsclient\" sudo -e"
-alias p="python -m http.server"
-alias netbeans="/usr/local/direct/netbeans/bin/netbeans"
-alias kawa="/usr/local/direct/kawa/bin/kawa"
-alias lo="livereload -o 0"
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-# live reload local websites
-alias serve="browser-sync start -s -f . --no-notify --host localhost --port 3000"
-alias cockroach="/usr/local/direct/cockroach/cockroach "
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-# export NODE_OPTIONS=--openssl-legacy-provider
-export ANDROID_HOME=~/Android/Sdk
-export ANDROID_NDK=~/Android/Sdk/ndk
-export GH_URL="https://github.com/startup-stack-sculptor"
-export DATABASE_URL="postgresql://bijya:CCOjReABUohF_O_MD5PrcQ@satin-goose-4048.8nk.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full"
-alias cockroach_db_pass="CCOjReABUohF_O_MD5PrcQ"
-alias t="touch"
-alias wxmaxima="/usr/local/direct/wxmaxima"
-alias balena="/usr/local/direct/balenaEtcher"
-alias android-studio="/usr/local/direct/android-studio/bin/studio.sh"
-alias flutter-reload="~/.utils/flutter-reload.sh"
-  
-export PATH=$PATH:"$HOME/.pub-cache/bin":"$HOME/.config/composer/vendor/bin":"/opt/fpcup/cross/bin/all-android/bin":"/home/pm/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin":"$HOME/go/bin"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
-alias lambdanative="/home/pm/Downloads/lambdanative-1.1.1/scripts/lambdanative"
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
 
-alias METAMASK_PASSWORD='c28b6ad6d27e'
-alias OPENAPI_KEY="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"
-alias FIVERR="https://www.fiverr.com/jdmishr"
-alias GITHUB_URL="https://github.com/startup-stack-sculptor"
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git asdf kubectl)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+. ~/.customrc.sh
+. ~/function.sh
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba init' !!
+export MAMBA_EXE='/home/patw/.local/bin/micromamba';
+export MAMBA_ROOT_PREFIX='/home/patw/micromamba';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias micromamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
+
+# Turso
+export PATH="/home/patw/.turso:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+PATH="/home/patw/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/patw/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/patw/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/patw/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/patw/perl5"; export PERL_MM_OPT;
+
+# pnpm
+export PNPM_HOME="/home/patw/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

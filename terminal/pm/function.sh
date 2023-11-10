@@ -1,3 +1,9 @@
+mcd() {
+    mkdir $1
+    cd $1
+}
+
+
 bfe() {
     local file
     file=$(fzf --preview-window=80% --preview 'bat --color=always {}' --query="$1" --exit-0)
@@ -18,24 +24,6 @@ fsearch() {
 
 mvnsearch() {
     curl -s "https://search.maven.org/solrsearch/select?q=$1&rows=$2&wt=json" | jq '.response.docs[].id'
-}
-
-extract() {
-    if [ -f "$1" ]; then
-	case "$1" in
-	    *.tar.gz | *.tgz) tar xvfz "$1";;
-	    *.tar.bz2) tar xvfj "$1";;
-	    *.tar.xz) tar xvfJ "$1";;
-	    *.gz) gunzip "$1";;
-	    *.bz2) tar xvfz "$1";;
-	    *.zip) unzip "$1";;
-	    *.rar) unrar x "$1";;
-	    *.7z) 7z x "$1";;
-	    *) echo "Cannot extract file '$1'";;
-	esac     	
-    else
-	echo "'$1' is not a valid file"
-    fi
 }
 
 http() {
@@ -72,7 +60,7 @@ pydelete() {
 }
 
 pyactivate() {
-    local dir="/home/pm/.venv/$1"
+    local dir="/home/patw/.venv/$1"
     local file="bin/activate"
     
     
@@ -92,18 +80,18 @@ pyactivate() {
 
 # Completion function for pycreate and pyactivate aliases
 # This function will suggest options from the ~/.venv directory
-function _py_completion {
-    local -a completions
-    local cur
+_py_completion() {
+    local venv_dir="$HOME/.venv"
+    local venvs=("$venv_dir"/*(/))
 
-    cur=${words[-1]}
-    completions=(~/.venv/*(/))
+    # Extract only directory names from the full paths
+    venvs=("${venvs[@]##*/}")
 
-    reply=( "${completions[@]##*/}" )
+
+    compadd -a venvs
 }
-
 # Register the completion function for pycreate and pyactivate aliases
-compctl -K _py_completion pyactivate pydelete
+compdef _py_completion pyactivate pydelete
 
 
 git_sparse_checkout() {
@@ -134,14 +122,6 @@ function rmd() {
     rm -rf $current_dir 
 }
 
-lovecopy() {
-    cp $1 love-android/app/src/embed/assets
-}
-
-love2html() {
-    love.js -c game.love html
-}
-
 
 liblocation() {
     ldconfig -p | grep lib$1
@@ -157,7 +137,7 @@ e.() {
 }
 
 
-compile_with_emacs() {
+ce() {
     if [ "$#" -ne 2 ]; then
         echo "Usage: compile_with_emacs <project_directory> <compile_command>"
         return 1
@@ -174,37 +154,63 @@ send-to-shared() {
     mv $1 ~/VirtualBox VMs/Shared/
 }
 
-
-function split_audio_file() {
-  # Get the input arguments
-  local input_file=$1
-  local output_dir=$2
-  local interval=$3
-
-  # Check if the input file exists
-  if [[ ! -f "$input_file" ]]; then
-    echo "Input file does not exist."
-    return 1
-  fi
-
-  # Create the output directory if it does not exist
-  if [[ ! -d "$output_dir" ]]; then
-    mkdir "$output_dir"
-  fi
-
-  # Get the duration of the input file
-  local duration=$(ffprobe -i "$input_file" -show_entries format=duration -v quiet)
-
-  # Calculate the number of splits
-  local num_splits=$(echo "$duration/$interval" | bc)
-
-  # Start splitting the file
-  for (( i=0; i<$num_splits; i++ )); do
-    local start=$(echo "$interval*$i" | bc)
-    local end=$(echo "$interval*($i+1)" | bc)
-    local output_file="$output_dir/split-$i.wav"
-
-    ffmpeg -i "$input_file" -ss "$start" -t "$end" "$output_file"
-  done
+e.mk() {
+    make -f /usr/local/direct/erlang.mk $*
+    cp /usr/local/direct/erlang.mk .
 }
 
+split-audio-45() {
+    ffmpeg -i $1 -f segment -segment_time 2700 -c copy output_%03d.mp3
+}
+
+
+appx() {
+    x /usr/local/direct/$1
+}
+
+# Define a custom completion function for the "appx" command
+_appx() {
+    local files
+    files=("/usr/local/direct/"*.{tar.gz,tar.xz,zip,7z}(:t))
+    compadd -a files
+}
+
+# Associate the completion function with the "appx" command
+compdef _appx appx
+
+
+lo() {
+    livereload -o 0
+}
+
+ariaui() {
+    cd /usr/local/direct/webui-aria2/
+    lo
+}
+
+grantdb() {
+    local db_name=$1
+
+    mariadb -e "CREATE DATABASE ${db_name};"
+    mariadb -e "show databases;"
+    echo "Granting ALL privileges on ${db_name} to bijay"
+    mariadb -e "GRANT ALL PRIVILEGES ON ${db_name}.* TO 'bijay'@'localhost';"
+    mariadb -e "FLUSH PRIVILEGES;"
+    echo "You're good now :)"
+}
+
+deno_upgrade() {
+    deno upgrade
+    objcopy -S ~/.deno/bin/deno ~/.deno/bin/deno_stripped
+    mv ~/.deno/bin/deno_stripped ~/.deno/bin/deno
+}
+
+aur-clone() {
+    git clone https://aur.archlinux.org/$1
+    cd $1
+    makepkg -s
+}
+
+gtc-gh() {
+    gtc https://github.com/$1
+}
