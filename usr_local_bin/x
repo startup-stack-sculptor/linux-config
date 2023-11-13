@@ -1,0 +1,16 @@
+if [ -f "$1" ]
+then
+    case "$1" in
+	(*.tar.gz | *.tgz) tar xvfz "$1" ;;
+	(*.tar.bz2) tar xvfj "$1" ;;
+	(*.tar.xz) tar xvfJ "$1" ;;
+	(*.gz) gunzip "$1" ;;
+	(*.bz2) tar xvfz "$1" ;;
+	(*.zip) unzip "$1" ;;
+	(*.rar) unrar x "$1" ;;
+	(*.7z) 7z x "$1" ;;
+	(*) echo "Cannot extract file '$1'" ;;
+    esac
+else
+    echo "'$1' is not a valid file"
+fi
